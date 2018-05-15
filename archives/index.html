@@ -101,7 +101,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -190,9 +190,9 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             关于
           </a>
@@ -200,9 +200,9 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             标签
           </a>
@@ -210,9 +210,9 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             分类
           </a>
@@ -279,14 +279,14 @@
 
         
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/05/14/hello-world/" itemprop="url">
+            <a class="post-title-link" href="/2018/05/15/搭建github-hexo个人博客/" itemprop="url">
               
-                <span itemprop="name">Hello World</span>
+                <span itemprop="name">搭建github+hexo个人博客</span>
               
             </a>
         
@@ -294,9 +294,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-14T23:06:34+08:00"
-              content="2018-05-14" >
-          05-14
+              datetime="2018-05-15T23:01:43+08:00"
+              content="2018-05-15" >
+          05-15
         </time>
       </div>
 
@@ -347,7 +347,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">周子川</p>
+              <img class="site-author-image" itemprop="image"
+                src="https://ws1.sinaimg.cn/large/006tNc79gy1frbawwraxjj308c08cjr8.jpg"
+                alt="修行者" />
+            
+              <p class="site-author-name" itemprop="name">修行者</p>
               <p class="site-description motion-element" itemprop="description">知修行，能取舍</p>
           </div>
 
@@ -365,7 +369,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -403,17 +425,13 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">周子川</span>
+  <span class="author" itemprop="copyrightHolder">修行者</span>
 
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-
-
-  <span class="post-meta-divider">|</span>
 
 
 
