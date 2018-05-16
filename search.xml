@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[SpringCloud介绍]]></title>
     <url>%2F2018%2F05%2F16%2FSpringCloud%E7%B3%BB%E5%88%97%2FSpringCloud%E4%BB%8B%E7%BB%8D%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[什么是微服务 微服务架构优势Spring Cloud可以做哪些事情Spring Cloud体系介绍首先看看Spring Cloud的组件架构图]]></content>
       <categories>
         <category>SpringCloud</category>
       </categories>
