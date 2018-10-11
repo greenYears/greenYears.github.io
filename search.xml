@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux服务器上使用less命令查看文件乱码]]></title>
+    <url>%2F2018%2F10%2F11%2F%E5%85%B6%E5%AE%83%2Fless%E6%9F%A5%E7%9C%8B%E4%B9%B1%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[表现形式在linux上使用less命令查看文件的时候，服务器会提示如下： 12[root@izbp1j3sk6yysftuzun199z sdp-service]# less out.log&quot;out.log&quot; may be a binary file. See it anyway? 此时如果输入no，则退出查看，如果输入yes会进行查看文件，但是文档中文会出现乱码，如 122018-10-11 09:56:00.003 INFO 15558 --- [pool-1-thread-1] c.y.sdp.job.profit.ComputeProfitJob : ----------2018-10-11 09:56:00&lt;EF&gt;&lt;BC&gt;&lt;9A&gt;&lt;E8&gt;&lt;AE&gt;&lt;A1&gt;&lt;E7&gt;&lt;AE&gt;&lt;97&gt;&lt;E5&gt;&lt;88&gt;&lt;86&gt;&lt;E6&gt;&lt;B6&gt;&lt;A6&gt;&lt;E5&gt;&lt;AE&gt;&lt;9A&gt;&lt;E6&gt;&lt;97&gt;&lt;B6&gt;&lt;E4&gt;&lt;BB&gt;&lt;BB&gt;&lt;E5&gt;&lt;8A&gt;&lt;A1&gt;&lt;E7&gt;&lt;BB&gt;&lt;93&gt;&lt;E6&gt;&lt;9D&gt;&lt;9F&gt;---------- 解决方法 首先使用echo $LESSCHARSET查看less的编码， 123[root@izbp1j3sk6yysftuzun199z sdp-service]# echo $LESSCHARSET[root@izbp1j3sk6yysftuzun199z sdp-service]# 看情况设置less的编码格式(我的服务器上使用utf-8查看中文) 1234[root@izbp1j3sk6yysftuzun199z sdp-service]# export LESSCHARSET=utf-8[root@izbp1j3sk6yysftuzun199z sdp-service]# echo $LESSCHARSETutf-8[root@izbp1j3sk6yysftuzun199z sdp-service]# 此时使用less命令查看文件，文件中的中文即正常了]]></content>
+      <categories>
+        <category>linux</category>
+        <category>commond</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>commond</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[完美将工程从SVN迁移到Git仓库，并保留commit历史]]></title>
     <url>%2F2018%2F05%2F30%2F%E5%B7%A5%E5%85%B7%2F%E5%AE%8C%E7%BE%8E%E5%B0%86SVN%E8%BF%81%E7%A7%BB%E5%88%B0Git%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[本案例并不需要安装svn环境 导出SVN系统工程首先，我们需要一台Linux系统的机器(或者虚拟机)，并安装git-svn: 1yum install git-svn 进入将要进行保存代码仓库的目录(例如：/home/mygit),创建users.txt文件，其作用是为了将svn中的提交作者和mygit中的作者进行关联映射。该文件结构类似于 12ZhangSan = Zhang San &lt;san.zhang@mail.com&gt;LiSi = Li Si &lt;si.li@mail.com&gt; 注意：该文件可以先从使用svn命令从svn服务器将代码checkout下来，然后使用命令生成一个svn作者列表，进行修改，因本人项目参与人数不多，故使用手工编写。 安装完git-svn工具之后，使用git svn clone ...命令从svn服务器clone项目 1git svn clone --stdlayout --no-metadata -A users.txt http://svn.xxx.com/programer temp-dir 这个命令会在temp-dir中新建一个Git repo,并从svn中拉取代码，其中--stdlayout参数表示该项目在svn中是标准的trunk/branches/tags目录结构，如果不是，那么需要使用 --trunk, branches, --tags参数,除了trunk,其它的均是复数形式，如： 1git svn clone --no-metadata -A users.txt http://svn.xxx.com/programer --trunk=trunk temp-dir 如果项目中没有任何分支，连trunk也没有，则不需要任何参数，如 1git svn clone --no-metadata -A users.txt http://svn.xxx.com/programer temp-dir 如果出现用户名没有找到，更新users.txt文件之后，然后 12cd temp-dirgit svn fetch 完成后,git会将checkout svn的trunk 到本地master分支,其它的svn branch将会设为git remote， 可以查看所有的svn branch 1git branch -r 为其它svn branch创建本地分支 1git checkout -b local_branch_name remotes/branch_name 为其它svn tag创建tag 1git tag tag_name remotes/tags/tag_name 将上面的git-svn仓库 clone到一个干净的git本地库中 1234cd ..git clone temp-dir projectNamerm -rf temp-dir // 删除之前的git-svn库cd projectName // 进入干净的git本地库中 于是之前的git-svn库就成了现在的git本地库的remote branch了，可以使用git branch查看本地分支有哪些。在使用git checkout ...对每一个分支再建立一次本地分支 1git checkout -b local_branch origin/remote_branch tag貌似不需要再重新建立了，可以使用git tag查看本地是否有tag。 最后，将干净的git本地库中将之前的remote删除. 1git remote rm origin 将本地git库推送到远端将本地的git库推送到远程中央仓库 12git remote add origin http://$&#123;user&#125;@bitbucket.xxx.com/....git push -u origin master 推送所有的branch 1git push origin --all 推送所有的tag 1git push origin --tags]]></content>
