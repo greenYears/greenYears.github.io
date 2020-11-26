@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /home/
+Allow: /archives/
+Allow: /about/
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+
+Sitemap: http://blog.meiqin.site/sitemap.xml
+Sitemap: http://blog.meiqin.site/baidusitemap.xml
